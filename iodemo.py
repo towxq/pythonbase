@@ -27,5 +27,16 @@ __author__ = '01210367'
 
 
 if __name__ == '__main__':
-    file = open('E:\url.txt','r')
-    print file.read()
+    try:
+        file = open('E:\url.txt', 'r+')
+        print file.read()
+    except Exception, e:
+        print("该文件不存在！")
+    finally:
+        file.close()
+
+    # name = raw_input("your name:")
+    # age = raw_input("your age:")
+    # weigth = raw_input("your weigth;")
+    # print "so you name %r age %r and %r heavy" % (name, age, weigth)
+
