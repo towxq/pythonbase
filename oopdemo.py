@@ -2,7 +2,7 @@
 __author__ = 'wxq'
 
 class A:
-    #构造器
+    # 构造器
     def __init__(self,name,age):
         self.name = name
         self.age = age
@@ -14,7 +14,7 @@ class A:
         print("A de def bbb")
 
 class B:
-     #构造器
+     # 构造器
      def __init__(self,name,age,sex):
         self.name = name
         self.age = age
@@ -28,7 +28,7 @@ class B:
 
 class C(A,B):
     ddd = 12344
-    #静态数据
+    # 静态数据
     def ccc(self):
         print ("C de def ccc")
 
@@ -72,7 +72,7 @@ class P(object):
 
 class C(P):
     def __init__(self):
-        P.__init__(self)  #调用父类的init
+        P.__init__(self)  # 调用父类的init
         # super(C, self).__init__()  不需要明确父类的名字  当继承的关系改变时，代码不需要做修改
         print "C's constructor"
 
@@ -143,7 +143,7 @@ if __name__ == "__main__":
 
 class PP:
     def __init__(self):
-        self.__name = "wxq1213123"#变量私有化
+        self.__name = "wxq1213123"  # 变量私有化
 
     def __foo(self):
         print "private foo run"
