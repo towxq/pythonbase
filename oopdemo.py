@@ -64,3 +64,102 @@ class TestClassMethod:
         print "类方法"
 
 # 通常的方法需要一个实例（self）作为第一个参数，对于类方法而言，需要类而不是实例作为第一个参数，类似self,不过很多人使用cls作为变量名字
+
+
+class P(object):
+    def __init__(self):
+        print "p's constructor"
+
+class C(P):
+    def __init__(self):
+        P.__init__(self)  #调用父类的init
+        # super(C, self).__init__()  不需要明确父类的名字  当继承的关系改变时，代码不需要做修改
+        print "C's constructor"
+
+if __name__ == "__main__":
+    c = C()
+
+# 当从一个带构造器init的类继承，如果你不去覆盖init，他将会被继承自动调用，但如果你在子类中覆盖了init，子类实例化时，父类的init不会被自动调用。
+# 如果你想调用父类的init需要使用子类的实例去调用父类的方法
+
+
+# 经典类 类的使用解释的顺序，深度优先，从左到右
+class P1:
+    def foo(self):
+        print "p1 de foo"
+
+class P2:
+    def foo(self):
+        print "P2 de foo"
+    def bar(self):
+        print "P2 de bar"
+
+class C1(P1,P2):
+    pass
+
+class C2(P1,P2):
+    def bar(self):
+        print "C2 de bar"
+
+class GC(C1,C2):
+    pass
+
+if __name__ == "__main__":
+    gc = GC()
+    gc.foo()
+    gc.bar()
+
+# 新式类 广度优先
+class P1(object):
+    def foo(self):
+        print "p1 de foo"
+
+class P2(object):
+    def foo(self):
+        print "P2 de foo"
+    def bar(self):
+        print "P2 de bar"
+
+class C1(P1,P2):
+    pass
+
+class C2(P1,P2):
+    def bar(self):
+        print "C2 de bar"
+
+class GC(C1,C2):
+    pass
+
+if __name__ == "__main__":
+    gc = GC()
+    gc.foo()
+    gc.bar()
+
+# Python 2.x中默认都是经典类，只有显式继承了object才是新式类
+# Python 3.x中默认都是新式类，不必显式的继承object
+
+
+# 默认情况下，属性在python中都是公开的，类所在的模块和导入了类所在的其他模块的代码都可以访问到，给数据加上一些可见性，只提供访问函数来访问其值，这就是熟知的隐藏
+
+class PP:
+    def __init__(self):
+        self.__name = "wxq1213123"#变量私有化
+
+    def __foo(self):
+        print "private foo run"
+
+    def getName(self):  # 向外暴露方法
+        return self.__name
+
+    def setName(self, newname):
+        self.__name = newname
+
+    @property
+    def name(self):   # 可以获取私有属性值
+        return self.__name
+
+if __name__ == "__main__":
+    obj = PP()
+    obj.setName("wxqwxq123")
+    print obj.getName()
+    print obj.name
