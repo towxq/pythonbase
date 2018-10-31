@@ -56,25 +56,25 @@ if __name__ ==  '__main__':
 class TestStaticMethod:
     @staticmethod
     def foo():
-        print "静态方法"
+        print("静态方法")
 
 class TestClassMethod:
     @classmethod
     def foo(cls):
-        print "类方法"
+        print("类方法")
 
 # 通常的方法需要一个实例（self）作为第一个参数，对于类方法而言，需要类而不是实例作为第一个参数，类似self,不过很多人使用cls作为变量名字
 
 
 class P(object):
     def __init__(self):
-        print "p's constructor"
+        print("p's constructor")
 
 class C(P):
     def __init__(self):
         P.__init__(self)  # 调用父类的init
         # super(C, self).__init__()  不需要明确父类的名字  当继承的关系改变时，代码不需要做修改
-        print "C's constructor"
+        print("C's constructor")
 
 if __name__ == "__main__":
     c = C()
@@ -86,20 +86,20 @@ if __name__ == "__main__":
 # 经典类 类的使用解释的顺序，深度优先，从左到右
 class P1:
     def foo(self):
-        print "p1 de foo"
+        print("p1 de foo")
 
 class P2:
     def foo(self):
-        print "P2 de foo"
+        print("P2 de foo")
     def bar(self):
-        print "P2 de bar"
+        print("P2 de bar")
 
 class C1(P1,P2):
     pass
 
 class C2(P1,P2):
     def bar(self):
-        print "C2 de bar"
+        print("C2 de bar")
 
 class GC(C1,C2):
     pass
@@ -112,20 +112,20 @@ if __name__ == "__main__":
 # 新式类 广度优先
 class P1(object):
     def foo(self):
-        print "p1 de foo"
+        print("p1 de foo")
 
 class P2(object):
     def foo(self):
-        print "P2 de foo"
+        print("P2 de foo")
     def bar(self):
-        print "P2 de bar"
+        print("P2 de bar")
 
 class C1(P1,P2):
     pass
 
 class C2(P1,P2):
     def bar(self):
-        print "C2 de bar"
+        print("C2 de bar")
 
 class GC(C1,C2):
     pass
@@ -146,7 +146,7 @@ class PP:
         self.__name = "wxq1213123"  # 变量私有化
 
     def __foo(self):
-        print "private foo run"
+        print("private foo run")
 
     def getName(self):  # 向外暴露方法
         return self.__name
@@ -161,5 +161,5 @@ class PP:
 if __name__ == "__main__":
     obj = PP()
     obj.setName("wxqwxq123")
-    print obj.getName()
-    print obj.name
+    print(obj.getName())
+    print(obj.name)

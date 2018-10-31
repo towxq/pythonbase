@@ -28,9 +28,9 @@ __author__ = '01210367'
 
 if __name__ == '__main__':
     try:
-        file = open('E:\url.txt', 'r+')
-        print file.read()
-    except Exception, e:
+        file = open("E:url.txt", 'r+')
+        print(file.read())
+    except Exception as e:
         print("该文件不存在！")
     finally:
         file.close()
